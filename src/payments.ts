@@ -33,7 +33,7 @@ export class Payments extends HTMLElement {
     this.payments?.forEach( (miner:any)  => {
 
       console.log(this.payments)
-      html +=`<tr><td>Miner ${ miner }</td><td> ${miner} paid NEXA</td></tr>`;
+      html +=`<tr><td>Miner ${ miner }</td><td> ${miner} paid ETC</td></tr>`;
       console.log(html)
 
     })
@@ -44,7 +44,7 @@ export class Payments extends HTMLElement {
      Object.entries(this.payments?.immature).forEach( ([miner, tobePaid]) => {
 
       console.log(this.payments)
-       html +=`<tr><td>${ miner }</td><td> ${tobePaid} to be paid NEOX</td></tr>`;
+       html +=`<tr><td>${ miner }</td><td> ${tobePaid} to be paid ETC</td></tr>`;
        console.log(html)
 
     })
@@ -54,7 +54,7 @@ export class Payments extends HTMLElement {
     Object.entries(this.payments?.paid).forEach( ([miner, tobePaid]) => {
 
       console.log(this.payments)
-      html +=`<tr><td>Miner ${ miner }</td><td> ${tobePaid} paid NEOX</td></tr>`;
+      html +=`<tr><td>Miner ${ miner }</td><td> ${tobePaid} paid ETC</td></tr>`;
       console.log(html)
 
     })
