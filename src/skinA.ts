@@ -23,26 +23,26 @@ class SkinA extends HTMLElement {
     this.shadowRoot.innerHTML = this.html();
     store.query.select().pipe(tap((data: any) => {
       if(!data.loading) {
-        console.log('blocks', data?.pool?.kaspa.poolFeePercent)
-        this.blocks = data?.pool?.kaspa?.totalBlocks;
-        this.poolFee = data?.pool?.kaspa?.poolFeePercent
-        this.miners = data?.pool?.kaspa?.poolStats?.connectedMiners
+        console.log('blocks', data?.pool?.etcsolo.poolFeePercent)
+        this.blocks = data?.pool?.etcsolo?.totalBlocks;
+        this.poolFee = data?.pool?.etcsolo?.poolFeePercent
+        this.miners = data?.pool?.etcsolo?.poolStats?.connectedMiners
       }
     })).subscribe()
 
     ws.onmessage = (message) => {
       console.log(`message received`, message.data)
       const m = JSON.parse(message.data)
-      if(m.type === 'hashrateupdated' && m.miner === null && m.poolId === 'nexa1') {
-        store.setDashBoardHasrate(m.hashrate, 'kaspa')
+      if(m.type === 'hashrateupdated' && m.miner === null && m.poolId === 'etcsolo') {
+        store.setDashBoardHasrate(m.hashrate, 'etcsolo')
         console.log(store.query.getValue())
       }
-      if(m.type === 'hashrateupdated' && m.miner !== null && m.poolId === 'nexa1') {
+      if(m.type === 'hashrateupdated' && m.miner !== null && m.poolId === 'etcsolo') {
         const m = JSON.parse(message.data)
-        store.updateTopMiner(m, 'kaspa')
+        store.updateTopMiner(m, 'etcsolo')
       }
 
-      if(m.type === 'blockfound' && m.poolId === 'nexa1') {
+      if(m.type === 'blockfound' && m.poolId === 'etcsolo') {
 
         const js = document.createElement('script')
         js.src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"
@@ -241,7 +241,7 @@ class SkinA extends HTMLElement {
   changePool() {
 
 
-    (PoolService.getapi() === 'nexa1') ? this.navigate('/firo') : this.navigate('/')
+    (PoolService.getapi() === 'etcsolo') ? this.navigate('/firo') : this.navigate('/')
   }
   navigate(url: string | URL) {
     window.history.pushState({}, null, url);
@@ -251,15 +251,15 @@ class SkinA extends HTMLElement {
 
     const forward = this.shadowRoot.getElementById('navForward');
     forward.addEventListener('click',  (  ) =>  {
-      (PoolService.getapi() === 'nexa1') ? this.navigate( '/') : this.navigate( '/firo');
+      (PoolService.getapi() === 'etcsolo') ? this.navigate( '/') : this.navigate( '/firo');
 
       window.dispatchEvent(new CustomEvent( 'togglePool'));
     });
 
-    (!window.location.pathname.includes('firo')) ? PoolService.setApi('nexa1') : PoolService.setApi('nexa1');
-    axios.defaults.baseURL = 'https://api.hydranetwork.online/api/pools/' + PoolService.getapi();
+    (!window.location.pathname.includes('firo')) ? PoolService.setApi('etcsolo') : PoolService.setApi('etcsolo');
+    axios.defaults.baseURL = 'https://solopool.us/api/pools/' + PoolService.getapi();
     const image = this.shadowRoot.querySelector('.pool-coin') as HTMLImageElement;
-    (PoolService.getapi() === 'nexa1') ? image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png' : image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png';
+    (PoolService.getapi() === 'etcsolo') ? image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png' : image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png';
 
 
     this.renderWorkersPartial();
@@ -319,7 +319,7 @@ class SkinA extends HTMLElement {
             this.shadowRoot.querySelector("#pool").innerHTML = "";
             const poolHash = document.createElement("h1");
             poolHash.classList.add('ToFadeInAndOut')
-            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.kaspa?.poolStats.poolHashrate), 2, "H/s");
+            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.etcsolo?.poolStats.poolHashrate), 2, "H/s");
             this.shadowRoot.querySelector("#pool").append(poolHash);
 
         }))
