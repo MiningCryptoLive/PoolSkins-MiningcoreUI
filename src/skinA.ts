@@ -319,7 +319,7 @@ class SkinA extends HTMLElement {
             this.shadowRoot.querySelector("#pool").innerHTML = "";
             const poolHash = document.createElement("h1");
             poolHash.classList.add('ToFadeInAndOut')
-            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.etcsolo?.poolStats.poolHashrate), 2, "H/s");
+            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.kaspa?.poolStats.poolHashrate), 2, "H/s");
             this.shadowRoot.querySelector("#pool").append(poolHash);
 
         }))
