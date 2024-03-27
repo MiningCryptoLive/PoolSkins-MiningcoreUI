@@ -78,7 +78,7 @@ class Dashboard extends HTMLElement {
     })).subscribe( (data:MarketStoreState) => {
       console.log("data", data);
 
-      this.poolStats = data?.pool?.etcsolo;
+      this.poolStats = data?.pool?.kaspa;
       var ttf;
       var coin;
 
