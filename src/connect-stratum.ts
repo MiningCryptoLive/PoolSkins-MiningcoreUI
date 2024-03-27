@@ -14,7 +14,7 @@ export class ConnectStratum extends HTMLElement {
     const htmlContainer = this.shadowRoot.getElementById('minersContainer');
     store.query.select().pipe(tap( data => {
       console.log(data)
-      this.topMiners = _.cloneDeep(data.pool?.etcsolo?.topMiners)
+      this.topMiners = _.cloneDeep(data.pool?.kaspa?.topMiners)
       this.topMiners = this.topMiners.filter( m => {
         return m.hashrate > 0
       })
