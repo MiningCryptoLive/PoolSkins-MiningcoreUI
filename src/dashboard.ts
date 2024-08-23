@@ -78,12 +78,12 @@ class Dashboard extends HTMLElement {
     })).subscribe( (data:MarketStoreState) => {
       console.log("data", data);
 
-      this.poolStats = data?.pool?.kaspa;
+      this.poolStats = data?.pool?.etcsolo;
       var ttf;
       var coin;
 
-      (window.location.href.includes('firo')) ? ttf = 120 : ttf = 120;
-      (window.location.href.includes('firo')) ? coin = ' NEXA' : coin = ' NEXA';
+      (window.location.href.includes('Etc')) ? ttf = 120 : ttf = 120;
+      (window.location.href.includes('Etc')) ? coin = ' ETC' : coin = ' ETC';
       var _ttfNetHashRate = this.poolStats?.networkStats.networkHashrate;
       var _ttfHashRate = this.poolStats?.poolStats.poolHashrate;
       console.log('pool',_ttfHashRate)
