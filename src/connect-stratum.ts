@@ -111,7 +111,7 @@ export class ConnectStratum extends HTMLElement {
         </style>
         <div class="">
         <h1>STRATUM CONNECT FOR ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? 'ETC': 'ETC'}</h1>
-            ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? this.renderNexa() : this.renderNexa() }
+            ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? this.renderNeoxa() : this.renderNeoxa() }
         </div>
     `
   }
