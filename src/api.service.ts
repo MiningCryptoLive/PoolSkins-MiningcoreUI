@@ -4,7 +4,7 @@ import { PoolService } from "./poolService";
 
 
 
-axios.defaults.baseURL = 'https://solopool.us/api/pools/' + PoolService.getapi();
+axios.defaults.baseURL = 'https://etc.solopool.us/api/pools/' + PoolService.getapi();
 
 export const minerList = () => defer( () => axios.get('/miners')).pipe(map( (axiosResponse: AxiosResponse) => axiosResponse.data ))
 
