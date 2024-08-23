@@ -4,7 +4,7 @@ const { defer, map, of } = require("rxjs");
 
 
 
-axios.defaults.baseURL = 'https://solopool.us/api/pools/ectsolo';
+axios.defaults.baseURL = 'https://etc.solopool.us/api/pools/ectsolo';
 
  const minerList = () => defer( () => axios.get('/miners')).pipe(map( (axiosResponse) => axiosResponse.data ))
 
