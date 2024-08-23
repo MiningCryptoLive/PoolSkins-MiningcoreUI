@@ -3,11 +3,11 @@ import * as _ from "lodash";
 
 
 export interface MarketStoreState {
-   pool: Ethone<string>
+   pool: etcsolo<string>
 }
 
-export interface Ethone<T = string> {
-    kaspa: {
+export interface etcsolo<T = string> {
+    etcsolo: {
         topMiners: any[];
         poolStats: any;
         poolHashrate: number,
