@@ -257,7 +257,7 @@ class SkinA extends HTMLElement {
     });
 
     (!window.location.pathname.includes('firo')) ? PoolService.setApi('etcsolo') : PoolService.setApi('etcsolo');
-    axios.defaults.baseURL = 'https://solopool.us/api/pools/' + PoolService.getapi();
+    axios.defaults.baseURL = 'https://etc.solopool.us/api/pools/' + PoolService.getapi();
     const image = this.shadowRoot.querySelector('.pool-coin') as HTMLImageElement;
     (PoolService.getapi() === 'etcsolo') ? image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png' : image.src = 'https://k1pool.com/assets/media/logos/coin-nexa.png';
 
@@ -319,7 +319,7 @@ class SkinA extends HTMLElement {
             this.shadowRoot.querySelector("#pool").innerHTML = "";
             const poolHash = document.createElement("h1");
             poolHash.classList.add('ToFadeInAndOut')
-            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.kaspa?.poolStats.poolHashrate), 2, "H/s");
+            poolHash.innerText = "POOL HASHRATE " + _formatter((data.pool?.etcsolo?.poolStats.poolHashrate), 2, "H/s");
             this.shadowRoot.querySelector("#pool").append(poolHash);
 
         }))
@@ -761,7 +761,7 @@ class SkinA extends HTMLElement {
                       
               <div class="center-content">
             
-<!--                 <a href="#" class="button play-btn">ERGO POOL</a>-->
+<!--                 <a href="#" class="button play-btn">ETC POOL</a>-->
                 <h1 class="image-mask"><slot name="title"><div id="pool"></div> </slot></h1>
                 <h3>Pool Fee  <span id="fee"></span> %, SOLO/PROP</h3>
                 <div class="footer">
