@@ -6,7 +6,7 @@ import { poolStats } from "./api.service";
 
 
 
-const baseURL = 'https://solopool.us/api/pools/';
+const baseURL = 'https://etc.solopool.us/api/pools/';
 
 export const store = new MarketStore();
 
@@ -14,14 +14,14 @@ const poolService = poolStats()
 
 poolService.subscribe( message => {
   console.log(message)
-  store.setDashBoard(message.pool, 'kaspa')
+  store.setDashBoard(message.pool, 'etcsolo')
   console.log(store.query.getValue())
 })
-export const ws = new WebSocket('wss://solopool.us/notifications')
+export const ws = new WebSocket('wss://etc.solopool.us/notifications')
 
 const poolEffort = interval(55000).pipe(switchMap(_ => poolService.pipe(tap( data => {
- store.setDashBoardEffort( data.pool.poolEffort, 'kaspa')
-  store.setTopMiner(data.pool.topMiners, 'kaspa')
+ store.setDashBoardEffort( data.pool.poolEffort, 'etcsolo')
+  store.setTopMiner(data.pool.topMiners, 'etcsolo')
 })))).subscribe()
 
 
