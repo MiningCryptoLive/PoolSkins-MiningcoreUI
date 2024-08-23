@@ -16,6 +16,7 @@ const config = {
   },
   devServer: {
     open: true,
+    allowedHosts: "all",
     host: "localhost",
     historyApiFallback: {
       index: 'index.html'
