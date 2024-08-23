@@ -14,7 +14,7 @@ export class ConnectStratum extends HTMLElement {
     const htmlContainer = this.shadowRoot.getElementById('minersContainer');
     store.query.select().pipe(tap( data => {
       console.log(data)
-      this.topMiners = _.cloneDeep(data.pool?.kaspa?.topMiners)
+      this.topMiners = _.cloneDeep(data.pool?.etcsolo?.topMiners)
       this.topMiners = this.topMiners.filter( m => {
         return m.hashrate > 0
       })
@@ -80,12 +80,12 @@ export class ConnectStratum extends HTMLElement {
   renderNeox() {
     return ` <pre><h3>T-REX</h3>
         <code>
-          ./t-rex -a etchash -o stratum+tcp://solopool.us:5050 -u WALLET.WORKERNAME -p YourPassword
+          ./t-rex -a etchash -o stratum+tcp://etc.solopool.us:5050 -u WALLET.WORKERNAME -p YourPassword
         </code>
         </pre>
          <pre><h3>G-Miner</h3>
         <code>
-         ./miner -a etchash -s solopool.us:5050 -u WALLET.WORKERNAME -p YourPassword
+         ./miner -a etchash -s etc.solopool.us:5050 -u WALLET.WORKERNAME -p YourPassword
         </code>
         </pre>`
   }
@@ -110,8 +110,8 @@ export class ConnectStratum extends HTMLElement {
           }
         </style>
         <div class="">
-        <h1>STRATUM CONNECT FOR ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? 'NEXA': 'NEXA'}</h1>
-            ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? this.renderFiro() : this.renderFiro() }
+        <h1>STRATUM CONNECT FOR ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? 'ETC': 'ETC'}</h1>
+            ${ PoolService.getapi().toLowerCase().includes('etcsolo') ? this.renderEtc() : this.renderEtc() }
         </div>
     `
   }
